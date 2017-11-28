@@ -1,0 +1,37 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+
+  config.vm.define "build_node" do |build_node|
+    
+    build_node.vm.box = "centos/7"
+    build_node.vm.network "private_network", ip: "10.0.0.10"
+    build_node.vm.provider "virtualbox" do |vb|
+      
+      vb.memory = "512"
+    
+    end
+    
+    build_node.vm.provision "shell", path: "build_node.sh"
+  
+  end
+  
+  config.vm.define "deploy_node" do |deploy_node|
+    
+    deploy_node.vm.box = "centos/7"
+    deploy_node.vm.network "forwarded_port", guest: 9000, host: 9000
+    deploy_node.vm.network "private_network", ip: "10.0.0.11"
+    deploy_node.vm.provider "virtualbox" do |vb|
+      
+      vb.memory = "512"
+    
+    end
+    
+    deploy_node.vm.provision "shell", path: "deploy_node.sh"
+  
+  end
+  
+  config.vm.provision "shell", path: "init.sh"
+
+end
