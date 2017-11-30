@@ -1,5 +1,15 @@
 ///working
-aws ec2 run-instances --image-id ami-bf2ba8d0 --count 1 --key-name student13.pem --security-group-ids sg-23066349 --instance-type t2.micro  --block-device-mappings "DeviceName=/dev/sda1,Ebs={Encrypted=false,DeleteOnTermination=true,VolumeSize=1,VolumeType="standard"}"
+aws ec2 run-instances 
+    --image-id ami-bf2ba8d0 
+    --count 1 --key-name student13.pem 
+    --security-group-ids sg-23066349 
+    --instance-type t2.micro  
+    --block-device-mappings "DeviceName=/dev/sda1,Ebs={Encrypted=false,DeleteOnTermination=true,VolumeSize=1,VolumeType="standard"}"
+
+     
+
+
+
 {
     "Instances": [
         {
@@ -88,3 +98,163 @@ aws ec2 run-instances --image-id ami-bf2ba8d0 --count 1 --key-name student13.pem
     "OwnerId": "794978550796",
     "ReservationId": "r-0aaf0ae9f182afbc4"
 }
+
+
+========================================================================================
+vlad@vlad-HP-ProBook-4530s:~$ aws ec2 describe-instances
+{
+    "Reservations": [
+        {
+            "ReservationId": "r-0e36065d11285f025",
+            "Instances": [
+                {
+                    "VirtualizationType": "hvm",
+                    "BlockDeviceMappings": [],
+                    "Hypervisor": "xen",
+                    "Architecture": "x86_64",
+                    "InstanceId": "i-0ce8c087563710c57",
+                    "RootDeviceName": "/dev/xvda",
+                    "AmiLaunchIndex": 0,
+                    "State": {
+                        "Code": 80,
+                        "Name": "stopped"
+                    },
+                    "InstanceType": "t2.micro",
+                    "PrivateDnsName": "ip-172-31-47-94.eu-central-1.compute.internal",
+                    "Monitoring": {
+                        "State": "disabled"
+                    },
+                    "EnaSupport": true,
+                    "StateReason": {
+                        "Code": "Client.InstanceInitiatedShutdown",
+                        "Message": "Client.InstanceInitiatedShutdown: Instance initiated shutdown"
+                    },
+                    "PublicDnsName": "",
+                    "SubnetId": "subnet-b7da2fca",
+                    "EbsOptimized": false,
+                    "SecurityGroups": [
+                        {
+                            "GroupId": "sg-23066349",
+                            "GroupName": "student13"
+                        }
+                    ],
+                    "Placement": {
+                        "Tenancy": "default",
+                        "AvailabilityZone": "eu-central-1b",
+                        "GroupName": ""
+                    },
+                    "NetworkInterfaces": [
+                        {
+                            "SubnetId": "subnet-b7da2fca",
+                            "OwnerId": "794978550796",
+                            "NetworkInterfaceId": "eni-94a260bf",
+                            "PrivateIpAddresses": [
+                                {
+                                    "PrivateDnsName": "ip-172-31-47-94.eu-central-1.compute.internal",
+                                    "Primary": true,
+                                    "PrivateIpAddress": "172.31.47.94"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Attachment": {
+                                "Status": "attached",
+                                "AttachmentId": "eni-attach-6b158480",
+                                "DeleteOnTermination": true,
+                                "AttachTime": "2017-11-29T10:08:16.000Z",
+                                "DeviceIndex": 0
+                            },
+                            "Ipv6Addresses": [],
+                            "VpcId": "vpc-c24caea9",
+                            "Description": "",
+                            "PrivateDnsName": "ip-172-31-47-94.eu-central-1.compute.internal",
+                            "Status": "in-use",
+                            "Groups": [
+                                {
+                                    "GroupId": "sg-23066349",
+                                    "GroupName": "student13"
+                                }
+                            ],
+                            "MacAddress": "06:8d:f3:fe:ac:92",
+                            "PrivateIpAddress": "172.31.47.94"
+                        }
+                    ],
+                    "ProductCodes": [],
+                    "LaunchTime": "2017-11-29T10:08:16.000Z",
+                    "StateTransitionReason": "",
+                    "VpcId": "vpc-c24caea9",
+                    "SourceDestCheck": true,
+                    "ClientToken": "",
+                    "PrivateIpAddress": "172.31.47.94",
+                    "ImageId": "ami-bf2ba8d0",
+                    "KeyName": "student13.pem",
+                    "RootDeviceType": "ebs"
+                }
+            ],
+            "Groups": [],
+            "OwnerId": "794978550796"
+        }
+    ]
+}
+vlad@vlad-HP-ProBook-4530s:~$ aws ec2 describe-instances
+{
+    "Reservations": [
+        {
+            "OwnerId": "794978550796",
+            "Instances": [
+                {
+                    "AmiLaunchIndex": 0,
+                    "NetworkInterfaces": [],
+                    "PrivateDnsName": "",
+                    "ImageId": "ami-bf2ba8d0",
+                    "SecurityGroups": [],
+                    "EbsOptimized": false,
+                    "ProductCodes": [],
+                    "EnaSupport": true,
+                    "Architecture": "x86_64",
+                    "StateReason": {
+                        "Code": "Client.InstanceInitiatedShutdown",
+                        "Message": "Client.InstanceInitiatedShutdown: Instance initiated shutdown"
+                    },
+                    "LaunchTime": "2017-11-29T10:08:16.000Z",
+                    "Hypervisor": "xen",
+                    "RootDeviceName": "/dev/xvda",
+                    "StateTransitionReason": "",
+                    "BlockDeviceMappings": [],
+                    "ClientToken": "",
+                    "Monitoring": {
+                        "State": "disabled"
+                    },
+                    "InstanceType": "t2.micro",
+                    "KeyName": "student13.pem",
+                    "PublicDnsName": "",
+                    "VirtualizationType": "hvm",
+                    "RootDeviceType": "ebs",
+                    "Placement": {
+                        "Tenancy": "default",
+                        "AvailabilityZone": "eu-central-1b",
+                        "GroupName": ""
+                    },
+                    "InstanceId": "i-0ce8c087563710c57",
+                    "State": {
+                        "Code": 48,
+                        "Name": "terminated"
+                    }
+                }
+            ],
+            "ReservationId": "r-0e36065d11285f025",
+            "Groups": []
+        }
+    ]
+}
+
+
+aws ec2 run-instances 
+    --image-id ami-bf2ba8d0 
+    --count 1 --key-name student13.pem 
+    --security-group-ids sg-23066349 
+    --instance-type t2.micro  
+    --block-device-mappings "DeviceName=/dev/sda1,
+                             Ebs={Encrypted=false,DeleteOnTermination=true,VolumeSize=1,
+                             VolumeType="standard"}"
+    --tag-specifications 'ResourceType=instance,Tags=[{Key=name,Value=vlad}]'
+                         'ResourceType=volume,Tags=[{Key=some-department,Value=cost_price}]'
